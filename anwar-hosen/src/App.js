@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import React, {useState, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [friends, setFriends] = useState([]);
+
+useState(() => {
+  fetch('https://jsonplaceholder.typicode.com/users')
+  .then(res => res.json())
+  .then(data => setFriends(data))
+}, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <h1>Friends : {friends.length}</h1>
     </div>
   );
 }
